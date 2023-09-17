@@ -1,7 +1,6 @@
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.DayOfWeek;
 import java.util.Scanner; 
 
 class TestDate {
@@ -18,6 +17,20 @@ class TestDate {
         sc.close();
 
         // TODO : your code after this line
+
+        // Create a LocalDate object
+        LocalDate date = LocalDate.of(year, month, day);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        String formattedDate = date.format(formatter);
+
+        int dayOfWeekNumber = date.getDayOfWeek().getValue();
+
+        // Map the day of the week number to format (i.e 1 = Monday)
+        String dayOfWeek = DayOfWeek.of(dayOfWeekNumber).toString();
+
+        System.out.println("The date is: " + formattedDate);
+        System.out.println("The day of the week is: " + dayOfWeek);
         
     }
 }
